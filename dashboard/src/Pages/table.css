@@ -1,0 +1,12 @@
+.table_container{
+    margin-top: 100px;
+    /* border: 1px solid green; */
+}
+.select_value{
+    margin: 30px;
+    width: 50%;
+}
+.select_value select{
+    width: 100%;
+    border: 1px solid gray;
+}

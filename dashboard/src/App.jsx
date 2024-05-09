@@ -1,16 +1,21 @@
-import { useState } from 'react'
 
-import './App.css'
-import Student from './Pages/Student'
-import TableData from './Pages/TableData'
 
+import { ToastContainer } from 'react-toastify'
+
+import Nav from './Component/Navbar'
+import MainRoutes from './MainRoutes'
+import Footer from './Component/Footer'
+// import "./App.css"
 function App () {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-
-      <Student />
+      
+      <Nav />
+      <ToastContainer />
+    <MainRoutes />
+      <Footer />
+      {/* <Student /> */}
       {/* <TableData /> */}
     </>
   )

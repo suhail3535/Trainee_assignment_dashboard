@@ -1,23 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios";
-import { Table } from 'antd';
-import TableData from './TableData';
-const columns = [
-    {
-        title: 'Name',
-        dataIndex: 'name',
-        width: 150,
-    },
-    {
-        title: 'Age',
-        dataIndex: 'age',
-        width: 150,
-    },
-    {
-        title: 'Address',
-        dataIndex: 'address',
-    },
-];
+
+import DataTable from './TableData';
+
 const Student = () => {
     const [data, setData] = useState([])
 
@@ -35,7 +20,7 @@ const Student = () => {
     }, [])
     return (
         <div>
-            <TableData data={data} />
+            <DataTable data={data} />
 
         </div>
     )

@@ -1,61 +1,83 @@
 import React, { useState } from 'react';
-import {
-    Table,
-    Thead,
-    Tbody,
-    Tr,
-    Th,
-    Td,
-    TableCaption,
-    TableContainer,
-    Select,
-} from '@chakra-ui/react';
+import { Table } from 'antd';
+import "./table.css"
 
-const TableData = ({ data }) => {
-    const [selectedName, setSelectedName] = useState('');
+const columns = [
+    {
+        title: 'Sr.No',
+        dataIndex: 'index',
+        width: 100,
+    },
+    {
+        title: 'Assignment Name',
+        dataIndex: 'name',
+    },
+    {
+        title: 'Trainee Name',
+        dataIndex: 'sname',
+    },
+    {
+        title: 'Project Link',
+        dataIndex: 'link',
+        render: (text) => <a href={text} target="_blank" rel="noopener noreferrer">{text}</a>,
+    },
+    {
+        title: 'Github Link',
+        dataIndex: 'github',
+        render: (text) => <a href={text} target="_blank" rel="noopener noreferrer">{text}</a>,
+    },
+    {
+        title: 'Date',
+        dataIndex: 'date',
+    },
+];
 
-    const handleChange = (event) => {
-        setSelectedName(event.target.value);
-    };
+const DataTable = ({ data }) => {
+    const [filterValue, setFilterValue] = useState("");
+    const [searchTerm, setSearchTerm] = useState('');
+
+    // Filter data based on filter value
+    let filterData = filterValue ? data.filter((ele) => ele.name === filterValue) : data;
+console.log(filterData);
+    // Filter data based on search term
+    const filteredUsers = filterData.filter(user =>
+        user.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    // Modify filtered data to add serial number
+    const modifiedData = filteredUsers.map((item, index) => ({
+        ...item,
+        index: index + 1, // Adding 1 to make serial number start from 1
+    }));
 
     return (
-        <div>
-            <Select value={selectedName} onChange={handleChange} placeholder="Select name">
-
-                {data.map((ele) => (
-                    <option key={ele.name} value={ele.name}>
-                        {ele.name}
-                    </option>
-                ))}
-            </Select>
-            <TableContainer>
-                <Table variant='striped' colorScheme='teal'>
-                    <TableCaption>Imperial to metric conversion factors</TableCaption>
-                    <Thead>
-                        <Tr>
-                            <Th>To convert</Th>
-                            <Th>into</Th>
-                            <Th isNumeric>multiply by</Th>
-                        </Tr>
-                    </Thead>
-                    <Tbody>
-                        {data
-                            .filter((ele) =>ele.name === selectedName)
-                            .map((ele) => (
-                                <Tr key={ele.name}>
-                                    <Td>{ele.name}</Td>
-                                    <Td>
-                                        {/* GitHub link */}
-                                        <a style={{ color: "blue" }} href={ele.github} target="_blank" rel="noopener noreferrer">{ele.github}</a>
-                                    </Td>
-                                    <Td isNumeric>{ele.date}</Td>
-                                </Tr>
-                            ))}
-                    </Tbody>
-                </Table>
-            </TableContainer>
+        <div className='table_container'>
+            <div className='select_value'>
+                <select value={filterValue} onChange={(e) => setFilterValue(e.target.value)} name="" id="">
+                    <option value="">Select</option>
+                    <option value="Ramu">Ramu</option>
+                    <option value="Sunil Kumar">Sunil Kumar</option>
+                    <option value="Manjeet Singh">Manjeet Singh</option>
+                </select>
+            </div>
+            <input
+                type="text"
+                placeholder="Search by username"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <Table
+                columns={columns}
+                dataSource={modifiedData}
+                pagination={{
+                    pageSize: 50,
+                }}
+                scroll={{
+                    y: 400,
+                }}
+            />
         </div>
     );
 };
 
-export default TableData;
+export default DataTable;
