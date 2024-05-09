@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Table } from 'antd';
-import "./table.css"
+import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import "./table.css";
 
 const options = [
     { value: 'Sunil Kumar', label: 'Sunil Kumar' },
@@ -18,7 +19,8 @@ const options = [
     { value: 'Suresh Raigar', label: 'Suresh Raigar' },
     { value: 'Vikas Kumar', label: 'Vikas Kumar' },
     { value: 'Ashok Kumar', label: 'Ashok Kumar' },
-]
+];
+
 const columns = [
     {
         title: 'Sr.No',
@@ -65,11 +67,18 @@ const DataTable = ({ data }) => {
         index: index + 1, // Adding 1 to make serial number start from 1
     }));
 
+    // Calculate total projects submitted by each trainee
+    const totalProjectsData = {};
+    data.forEach((item) => {
+        totalProjectsData[item.sname] = (totalProjectsData[item.sname] || 0) + 1;
+    });
+    const totalProjectsChartData = Object.keys(totalProjectsData).map((key) => ({
+        name: key,
+        projects: totalProjectsData[key],
+    }));
+
     return (
         <div className='table_container'>
-
-
-
             <div className='select_value'>
                 <select value={filterValue} onChange={(e) => setFilterValue(e.target.value)}>
                     <option value="">Select Trainee</option>
@@ -77,24 +86,31 @@ const DataTable = ({ data }) => {
                         <option key={option.value} value={option.value}>{option.label}</option>
                     ))}
                 </select>
-
-                <Button onClick={resetFilter} type="primary" >Reset</Button>
-                {data&&(
+                <Button onClick={resetFilter} type="primary">Reset</Button>
+                {data && (
                     <div style={{ marginBottom: '0px' }}>Total Projects Submitted : {data.length}</div>
                 )}
             </div>
             {filterValue && (
                 <div style={{ marginBottom: '10px' }}>Total Assignment of {filterValue}: {filterData.length}</div>
             )}
+            <ResponsiveContainer width="100%" height={300}>
+                <BarChart
+                    data={filterValue ? totalProjectsChartData.filter(item => item.name === filterValue) : totalProjectsChartData}
+                    margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+                >
+                    <XAxis dataKey="name" />
+                    <YAxis />
+                    <Tooltip />
+                    <Legend />
+                    <Bar dataKey="projects" fill="#8884d8" />
+                </BarChart>
+            </ResponsiveContainer>
             <Table
                 columns={columns}
                 dataSource={modifiedData}
-                pagination={{
-                    pageSize: 50,
-                }}
-                scroll={{
-                    y: 400,
-                }}
+                pagination={{ pageSize: 50 }}
+                scroll={{ y: 400 }}
             />
         </div>
     );
