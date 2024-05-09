@@ -2,12 +2,15 @@
 import React from 'react'
 import "./nav.css"
 import { FaRegUserCircle } from 'react-icons/fa'
+import {Link} from "react-router-dom"
 const Navbar = () => {
   return (
     <div>
           <div className='nav'>
               <div>
-                  <img className='logo_khan' src="https://suhail3535.github.io/l.png" alt="" />
+          <Link to={"/"}>
+            <img className='logo_khan' src="https://suhail3535.github.io/l.png" alt="" />
+          </Link>
 
               </div>
               <div className='heading_div'>

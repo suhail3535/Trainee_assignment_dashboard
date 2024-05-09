@@ -1,12 +1,15 @@
 .table_container{
     margin-top: 100px;
-    /* border: 1px solid green; */
 }
 .select_value{
     margin: 30px;
-    width: 50%;
+    border: 1px solid rgb(235, 241, 235);
+    width: 60%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
 }
 .select_value select{
-    width: 100%;
-    border: 1px solid gray;
+    width: 55%;
+    border: 1px solid rgb(249, 248, 248);
 }

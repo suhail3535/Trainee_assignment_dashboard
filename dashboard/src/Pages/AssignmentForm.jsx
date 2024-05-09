@@ -8,7 +8,7 @@ const options = [
     { value: 'Sunil Kumar', label: 'Sunil Kumar' },
     { value: 'Ramu Singh', label: 'Ramu Singh' },
     { value: 'Manjeet Singh', label: 'Manjeet Singh' },
-    { value: 'Manish Yadav', label: 'Mannish Yadav' },
+    { value: 'Manish Yadav', label: 'Manish Yadav' },
     { value: 'Manoj gurjar', label: 'Manoj gurjar' },
     { value: 'Sohan Lal jat', label: 'Sohan Lal jat' },
     { value: 'SevaRam', label: 'SevaRam' },

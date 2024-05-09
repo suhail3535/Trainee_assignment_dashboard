@@ -1,7 +1,24 @@
 import React, { useState } from 'react';
-import { Table } from 'antd';
+import { Button, Table } from 'antd';
 import "./table.css"
 
+const options = [
+    { value: 'Sunil Kumar', label: 'Sunil Kumar' },
+    { value: 'Ramu Singh', label: 'Ramu Singh' },
+    { value: 'Manjeet Singh', label: 'Manjeet Singh' },
+    { value: 'Manish Yadav', label: 'Manish Yadav' },
+    { value: 'Manoj gurjar', label: 'Manoj gurjar' },
+    { value: 'Sohan Lal jat', label: 'Sohan Lal jat' },
+    { value: 'SevaRam', label: 'SevaRam' },
+    { value: 'Rajendra Koli', label: 'Rajendra Koli' },
+    { value: 'Mukesh jat', label: 'Mukesh jat' },
+    { value: 'SitaRam', label: 'SitaRam' },
+    { value: 'Mohit', label: 'Mohit' },
+    { value: 'Suresh Kumar', label: 'Suresh Kumar' },
+    { value: 'Suresh Raigar', label: 'Suresh Raigar' },
+    { value: 'Vikas Kumar', label: 'Vikas Kumar' },
+    { value: 'Ashok Kumar', label: 'Ashok Kumar' },
+]
 const columns = [
     {
         title: 'Sr.No',
@@ -34,38 +51,41 @@ const columns = [
 
 const DataTable = ({ data }) => {
     const [filterValue, setFilterValue] = useState("");
-    const [searchTerm, setSearchTerm] = useState('');
+
+    const resetFilter = () => {
+        setFilterValue("")
+    }
 
     // Filter data based on filter value
-    let filterData = filterValue ? data.filter((ele) => ele.name === filterValue) : data;
-console.log(filterData);
-    // Filter data based on search term
-    const filteredUsers = filterData.filter(user =>
-        user.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    let filterData = filterValue ? data.filter((ele) => ele.sname === filterValue) : data;
+    console.log(filterData);
 
-    // Modify filtered data to add serial number
-    const modifiedData = filteredUsers.map((item, index) => ({
+    const modifiedData = filterData.map((item, index) => ({
         ...item,
         index: index + 1, // Adding 1 to make serial number start from 1
     }));
 
     return (
         <div className='table_container'>
+
+
+
             <div className='select_value'>
-                <select value={filterValue} onChange={(e) => setFilterValue(e.target.value)} name="" id="">
-                    <option value="">Select</option>
-                    <option value="Ramu">Ramu</option>
-                    <option value="Sunil Kumar">Sunil Kumar</option>
-                    <option value="Manjeet Singh">Manjeet Singh</option>
+                <select value={filterValue} onChange={(e) => setFilterValue(e.target.value)}>
+                    <option value="">Select Trainee</option>
+                    {options.map(option => (
+                        <option key={option.value} value={option.value}>{option.label}</option>
+                    ))}
                 </select>
+
+                <Button onClick={resetFilter} type="primary" >Reset</Button>
+                {data&&(
+                    <div style={{ marginBottom: '0px' }}>Total Projects Submitted : {data.length}</div>
+                )}
             </div>
-            <input
-                type="text"
-                placeholder="Search by username"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-            />
+            {filterValue && (
+                <div style={{ marginBottom: '10px' }}>Total Assignment of {filterValue}: {filterData.length}</div>
+            )}
             <Table
                 columns={columns}
                 dataSource={modifiedData}
