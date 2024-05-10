@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Table } from 'antd';
+import { Button, Table, Spin } from 'antd';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import "./table.css";
 
@@ -56,6 +56,7 @@ const DataTable = ({ data }) => {
     const [filterValue, setFilterValue] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const pageSize = 10; // Number of items per page
+    const [loading, setLoading] = useState(false);
 
     const resetFilter = () => {
         setFilterValue("");
@@ -110,18 +111,22 @@ const DataTable = ({ data }) => {
                     <Bar dataKey="projects" fill="#8884d8" />
                 </BarChart>
             </ResponsiveContainer>
-            <Table
-                columns={columns}
-                dataSource={modifiedData}
-                pagination={{
-                    current: currentPage,
-                    pageSize: pageSize,
-                    total: filterData.length,
-                    onChange: (page) => setCurrentPage(page),
-                }}
-                scroll={{ y: 400 }}
-                rowKey={(record, index) => index + 1 + (currentPage - 1) * pageSize} // Specify row key
-            />
+            {loading ? (
+                <Spin size="large" />
+            ) : (
+                <Table
+                    columns={columns}
+                    dataSource={modifiedData}
+                    pagination={{
+                        current: currentPage,
+                        pageSize: pageSize,
+                        total: filterData.length,
+                        onChange: (page) => setCurrentPage(page),
+                    }}
+                    scroll={{ y: 400 }}
+                    rowKey={(record, index) => index + 1 + (currentPage - 1) * pageSize} // Specify row key
+                />
+            )}
         </div>
     );
 };
