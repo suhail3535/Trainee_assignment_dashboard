@@ -1,16 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios";
+import { Spin } from 'antd';
+
 
 import DataTable from './TableData';
 
 const Student = () => {
     const [data, setData] = useState([])
+    const [loading, setLoading] = useState(true);
+
 
     const getdata = async () => {
         try {
             let res = await axios.get("https://trainee-assignment-dashboard.vercel.app/student")
             console.log(res.data);
             setData(res.data)
+            setLoading(false)
         } catch (error) {
             console.log(error);
         }
@@ -20,8 +25,11 @@ const Student = () => {
     }, [])
     return (
         <div>
-            <DataTable data={data} />
+            {loading ? (
 
+                <div style={{ marginTop: "100px", wtidh: "50%", margin: "auto",textAlign:"center" }}><Spin size="large" /></div>
+            ) : (<DataTable data={data} />
+            )}
         </div>
     )
 }
