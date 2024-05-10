@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios";
 import { Spin } from 'antd';
-
+import Loader from './Loader';
 
 import DataTable from './TableData';
+
 
 const Student = () => {
     const [data, setData] = useState([])
@@ -26,8 +27,8 @@ const Student = () => {
     return (
         <div>
             {loading ? (
+                <Loader />
 
-                <div style={{ marginTop: "100px", wtidh: "50%", margin: "auto",textAlign:"center" }}><Spin size="large" /></div>
             ) : (<DataTable data={data} />
             )}
         </div>
