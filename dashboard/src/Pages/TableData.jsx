@@ -53,19 +53,20 @@ const columns = [
 
 const DataTable = ({ data }) => {
     const [filterValue, setFilterValue] = useState("");
+    const [currentPage, setCurrentPage] = useState(1);
+    const pageSize = 10; // Number of items per page
 
     const resetFilter = () => {
-        setFilterValue("")
+        setFilterValue("");
     }
 
     // Filter data based on filter value
     let filterData = filterValue ? data.filter((ele) => ele.sname === filterValue) : data;
-    console.log(filterData);
 
     const modifiedData = filterData.map((item, index) => ({
         ...item,
-        index: index + 1, // Adding 1 to make serial number start from 1
-    }));
+        index: index + 1, // Calculate index starting from 1
+    })).slice((currentPage - 1) * pageSize, currentPage * pageSize); // Apply pagination
 
     // Calculate total projects submitted by each trainee
     const totalProjectsData = {};
@@ -94,7 +95,7 @@ const DataTable = ({ data }) => {
             {filterValue && (
                 <div style={{ marginBottom: '10px' }}>Total Assignment of {filterValue}: {filterData.length}</div>
             )}
-            <ResponsiveContainer width="100%" height={300}>
+            <ResponsiveContainer className="bar" width="100%" height={300}>
                 <BarChart
                     data={filterValue ? totalProjectsChartData.filter(item => item.name === filterValue) : totalProjectsChartData}
                     margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
@@ -109,8 +110,14 @@ const DataTable = ({ data }) => {
             <Table
                 columns={columns}
                 dataSource={modifiedData}
-                pagination={{ pageSize: 50 }}
+                pagination={{
+                    current: currentPage,
+                    pageSize: pageSize,
+                    total: filterData.length,
+                    onChange: (page) => setCurrentPage(page),
+                }}
                 scroll={{ y: 400 }}
+                rowKey={(record, index) => index + 1 + (currentPage - 1) * pageSize} // Specify row key
             />
         </div>
     );

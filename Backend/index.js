@@ -9,6 +9,11 @@ const port =8080;
 app.use(bodyParser.json());
 
 app.use(cors());
+app.use(
+    cors({
+        origin: "*",
+    })
+);
 app.get("/", (req, res) => {
     res.status(200).send("Welcome To HomePage");
 });

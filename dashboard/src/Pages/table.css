@@ -1,8 +1,10 @@
 .table_container{
     margin-top: 100px;
+    /* border: 2px solid red; */
+    width: 100%;
 }
 .select_value{
-    margin: 30px;
+    /* margin: 30px; */
     border: 1px solid rgb(235, 241, 235);
     width: 60%;
     padding: 10px;
@@ -11,5 +13,28 @@
 }
 .select_value select{
     width: 55%;
-    border: 1px solid rgb(249, 248, 248);
+    border: 1px solid rgb(226, 222, 222);
+}
+@media screen and (min-width:200px) and (max-width:767px) {
+.table_container {
+        margin-top: 100px;
+        /* border: 2px solid red; */
+        width: 100%;
+    }
+    .bar{
+        /* display: none; */
+    }
+        .select_value {
+            /* margin: 30px; */
+            /* border: 1px solid rgb(11, 164, 11); */
+            width: 100%;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .select_value select {
+            width: 55%;
+            border: 1px solid rgb(249, 248, 248);
+        }
 }
