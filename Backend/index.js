@@ -12,7 +12,7 @@ app.use(cors());
 app.use(
     cors({
         origin: "https://trainee-assignment-dashboard-frontend.vercel.app",
-        methods: ["POST", "GET"],
+        methods: ["POST","GET"],
         credentials:true
     })
 );
@@ -20,12 +20,7 @@ app.get("/", (req, res) => {
     res.status(200).send("Welcome To HomePage");
 });
 app.use("/student", studentDetails);
-app.use(express.static(path.join(__dirname, 'public')));
 
-// Handles any requests that don't match the ones above - fallback to index.html
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
 app.listen(port, async () => {
     try {
         await connection;
