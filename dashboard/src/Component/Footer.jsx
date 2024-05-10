@@ -13,8 +13,9 @@ import {
 } from '@chakra-ui/react';
 import "../Pages/form.css"
 import { ReactNode } from 'react';
-import { FaGithub,FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
+import { FaGithub, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 import { BiMailSend } from 'react-icons/bi';
+import logoImg from "../assets/l.png"
 
 const Logo = (props) => {
     return (
@@ -32,7 +33,7 @@ const Logo = (props) => {
         //         fill="#2F855A"
         //     />
         // </svg>
-        <img className='logo_khan' src="https://suhail3535.github.io/l.png" alt="" />
+        <img className='logo_khan' src={logoImg} alt="" />
     );
 };
 
@@ -71,7 +72,7 @@ const ListHeader = ({ children }) => {
     );
 };
 
- const Footer= ()=> {
+const Footer = () => {
     return (
         <Box
             bg={useColorModeValue('black', 'black')}
@@ -92,13 +93,13 @@ const ListHeader = ({ children }) => {
                                 <FaTwitter className='icone_class' />
                             </SocialButton>
                             <SocialButton label={'YouTube'} href={''}>
-                                <FaYoutube  className='icone_class'/>
+                                <FaYoutube className='icone_class' />
                             </SocialButton>
                             <SocialButton label={'Instagram'} href={''} >
-                                <FaGithub  className='icone_class' />
+                                <FaGithub className='icone_class' />
                             </SocialButton>
                             <SocialButton label={'Instagram'} href={''} >
-                                <FaInstagram   className='icone_class'/>
+                                <FaInstagram className='icone_class' />
                             </SocialButton>
                         </Stack>
                     </Stack>
