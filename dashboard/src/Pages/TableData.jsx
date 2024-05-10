@@ -38,13 +38,14 @@ const columns = [
     {
         title: 'Project Link',
         dataIndex: 'link',
-        render: (text) => <a href={text} target="_blank" rel="noopener noreferrer">{text}</a>,
+        render: (text) => <a style={{ color: '#8884d8' }} href={text} target="_blank" rel="noopener noreferrer">{text}</a>,
     },
     {
         title: 'Github Link',
         dataIndex: 'github',
-        render: (text) => <a href={text} target="_blank" rel="noopener noreferrer">{text}</a>,
+        render: (text) => <a style={{ color: '#8884d8' }} href={text} target="_blank" rel="noopener noreferrer">{text}</a>,
     },
+
     {
         title: 'Date',
         dataIndex: 'date',
