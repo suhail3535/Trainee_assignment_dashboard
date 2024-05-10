@@ -8,7 +8,7 @@ const Student = () => {
 
     const getdata = async () => {
         try {
-            let res = await axios.get("http://localhost:8080/student")
+            let res = await axios.get("https://trainee-assignment-dashboard.vercel.app/student")
             console.log(res.data);
             setData(res.data)
         } catch (error) {

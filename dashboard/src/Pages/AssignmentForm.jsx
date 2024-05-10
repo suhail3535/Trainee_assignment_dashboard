@@ -29,7 +29,7 @@ const VehicleInfoForm = () => {
     const handleFormSubmit = async (values) => {
         setLoading(true);
         try {
-            const response = await axios.post('http://localhost:8080/student/add', values);
+            const response = await axios.post('https://trainee-assignment-dashboard.vercel.app/student/add', values);
             setLoading(false);
             toast.success("Thank you for submitting your assignment!");
 
