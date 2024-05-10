@@ -88,7 +88,9 @@ const DataTable = ({ data }) => {
                         <option key={option.value} value={option.value}>{option.label}</option>
                     ))}
                 </select>
-                <Button onClick={resetFilter} type="primary">Reset</Button>
+                <Button onClick={resetFilter} type="primary">
+                    {filterValue ? 'Reset Filter' : 'Filter Data'}
+                </Button>
                 {data && (
                     <div style={{ marginBottom: '0px' }}>Total Projects Submitted : {data.length}</div>
                 )}
