@@ -11,7 +11,9 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(
     cors({
-        origin: "*",
+        origin: "https://trainee-assignment-dashboard-frontend.vercel.app",
+        methods: ["POST", "GET"],
+        credentials:true
     })
 );
 app.get("/", (req, res) => {
