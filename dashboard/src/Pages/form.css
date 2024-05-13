@@ -8,6 +8,10 @@
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 
 }
+.main_form_login{
+    /* border: 2px solid red; */
+    margin-top: 20px;
+}
 .icone_class:hover{
 color: cyan;transition: all 0.3s ease-in-out;
 cursor: pointer;

@@ -21,7 +21,8 @@ const options = [
     { value: 'Vikas Kumar', label: 'Vikas Kumar' },
     { value: 'Ashok Kumar', label: 'Ashok Kumar' },
 ]
-
+// const api = "http://localhost:8080/student/add"
+const api = "https://trainee-assignment-dashboard.vercel.app/student/add"
 const VehicleInfoForm = () => {
     const [loading, setLoading] = useState(false);
     const [form] = Form.useForm();
@@ -29,7 +30,7 @@ const VehicleInfoForm = () => {
     const handleFormSubmit = async (values) => {
         setLoading(true);
         try {
-            const response = await axios.post('https://trainee-assignment-dashboard.vercel.app/student/add', values);
+            const response = await axios.post(api, values);
             setLoading(false);
             toast.success("Thank you for submitting your assignment!");
 

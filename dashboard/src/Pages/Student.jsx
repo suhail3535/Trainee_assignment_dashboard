@@ -5,7 +5,8 @@ import Loader from './Loader';
 
 import DataTable from './TableData';
 
-
+// const api = "http://localhost:8080/student"
+const api ="https://trainee-assignment-dashboard.vercel.app/student"
 const Student = () => {
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true);
@@ -13,7 +14,7 @@ const Student = () => {
 
     const getdata = async () => {
         try {
-            let res = await axios.get("https://trainee-assignment-dashboard.vercel.app/student")
+            let res = await axios.get(api)
             console.log(res.data);
             setData(res.data)
             setLoading(false)
