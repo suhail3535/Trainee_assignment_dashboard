@@ -6,7 +6,8 @@
 .select_value{
     /* margin: 30px; */
     border: 1px solid rgb(235, 241, 235);
-    width: 60%;
+    width: 95%;
+    margin: auto;
     padding: 10px;
     display: flex;
     justify-content: space-between;
@@ -14,6 +15,26 @@
 .select_value select{
     width: 55%;
     border: 1px solid rgb(226, 222, 222);
+}
+.marks_table{
+    border: 1px solid rgb(226, 222, 222);
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+.fields_container{
+    border: 1px solid rgb(226, 222, 222);
+    margin-top: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+.fields_container select{
+    border: 1px solid rgb(226, 222, 222);
+    width: 20%;
+}
+.fields_container input{
+    width: 50%;
 }
 @media screen and (min-width:200px) and (max-width:767px) {
 .table_container {

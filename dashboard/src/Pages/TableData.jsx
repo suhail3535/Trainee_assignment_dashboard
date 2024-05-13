@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Table, Spin } from 'antd';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import "./table.css";
+import { useNavigate } from 'react-router-dom';
 
 const options = [
     { value: 'Sunil Kumar', label: 'Sunil Kumar' },
@@ -53,6 +54,7 @@ const columns = [
 ];
 
 const DataTable = ({ data }) => {
+    const navigate=useNavigate()
     const [filterValue, setFilterValue] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const pageSize = 10; // Number of items per page
@@ -60,6 +62,9 @@ const DataTable = ({ data }) => {
 
     const resetFilter = () => {
         setFilterValue("");
+    }
+    const handleMarks = () => {
+    navigate("/marks")
     }
 
     // Filter data based on filter value
@@ -95,6 +100,7 @@ const DataTable = ({ data }) => {
                 {data && (
                     <div style={{ marginBottom: '0px' }}>Total Projects Submitted : {data.length}</div>
                 )}
+                <Button onClick={handleMarks} type='primary'>Students Marks</Button>
             </div>
             {filterValue && (
                 <div style={{ marginBottom: '10px' }}>Total Assignment of {filterValue}: {filterData.length}</div>

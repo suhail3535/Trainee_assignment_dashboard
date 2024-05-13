@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const { studentDetails } = require('./Route');
+const { studentmarks } = require('./Route');
 const { connection } = require("./db");
 const cors = require('cors')
 const app = express();
@@ -21,6 +22,7 @@ app.get("/", (req, res) => {
     res.status(200).send("Welcome To HomePage");
 });
 app.use("/student", studentDetails);
+app.use("/studentmark", studentmarks);
 
 app.listen(port, async () => {
     try {

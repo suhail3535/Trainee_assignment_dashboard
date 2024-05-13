@@ -2,8 +2,10 @@ const express = require("express");
 const app = express();
 
 const { studentModel } = require("./model.js");
+const { marksModel } = require("./model.js");
 app.use(express.json());
 const studentDetails = express.Router();
+const studentmarks = express.Router();
 
 
 // <--------------------postrequest-------------------------->
@@ -13,7 +15,17 @@ studentDetails.post("/add", async (req, res) => {
     try {
         const user = new studentModel(data);
         await user.save();
-        res.status(200).send({ msg: "product added" });
+        res.status(200).send({ msg: "Data Submitted" });
+    } catch (error) {
+        res.status(400).send({ msg: error.msg });
+    }
+});
+studentmarks.post("/addmarks", async (req, res) => {
+    const data = req.body;
+    try {
+        const user = new marksModel(data);
+        await user.save();
+        res.status(200).send({ msg: "Marks Link Added" });
     } catch (error) {
         res.status(400).send({ msg: error.msg });
     }
@@ -21,6 +33,14 @@ studentDetails.post("/add", async (req, res) => {
 
 // <--------------------getrequest-------------------------->
 
+studentmarks.get("/", async (req, res) => {
+    try {
+        const users = await marksModel.find();
+        res.status(200).send(users);
+    } catch (error) {
+        res.status(400).send({ msg: "error.msg " });
+    }
+});
 studentDetails.get("/", async (req, res) => {
     try {
         const users = await studentModel.find();
@@ -38,7 +58,7 @@ studentDetails.patch("/update/:userID", async (req, res) => {
     const data = req.body;
     try {
         await studentModel.findByIdAndUpdate({ _id: userID }, data);
-        res.status(200).send({ msg: "product details updated" });
+        res.status(200).send({ msg: "Details Updated" });
     } catch (error) {
         res.status(400).send({ msg: error.msg });
     }
@@ -60,4 +80,5 @@ studentDetails.delete("/delete/:userID", async (req, res) => {
 // export userRouter
 module.exports = {
     studentDetails,
+    studentmarks
 };
