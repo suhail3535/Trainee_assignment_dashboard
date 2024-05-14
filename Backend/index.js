@@ -10,14 +10,14 @@ const port =8080;
 app.use(bodyParser.json());
 
 app.use(cors());
-app.use(
-    cors({
-        origin: "https://trainee-assignment-dashboard-frontend.vercel.app",
+// app.use(
+//     cors({
+//         origin: "https://trainee-assignment-dashboard-frontend.vercel.app",
         // origin: "http://localhost:8080",
-        methods: ["POST","GET"],
-        credentials:true
-    })
-);
+//         methods: ["POST","GET"],
+//         credentials:true
+//     })
+// );
 app.get("/", (req, res) => {
     res.status(200).send("Welcome To HomePage");
 });
