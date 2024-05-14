@@ -13,7 +13,7 @@ const columns = [
         render: (text) => <span>{text}</span>,
     },
     {
-        title: 'Link',
+        title: 'Marks Link',
         dataIndex: 'link', // Assuming 'link' is the key for the input field value
         render: (text) => <a href={text} style={{ color: 'blue' }} target="_blank" rel="noopener noreferrer">{text}</a>,
     },
@@ -75,6 +75,7 @@ const Exam = ({ initialData }) => {
                     value={selectValue}
                     onChange={(e) => setSelectValue(e.target.value)}
                 >
+                    <option value=''>Select</option>
                     <option value='January'>January</option>
                     <option value='February'>February</option>
                     <option value='March'>March</option>
