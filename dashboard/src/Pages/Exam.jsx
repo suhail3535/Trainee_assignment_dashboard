@@ -94,7 +94,8 @@ const Exam = ({ initialData }) => {
                     Submit
                 </Button>
             </div>
-            <h1 style={{text-align:"center",margin-Top:"20px"}}>All Exams Marks Details</h1>
+<h1 style={{textAlign: "center", marginTop: "20px"}}>All Exams Marks Details</h1>
+
             <Table
                 className='marks_table'
                 columns={columns}
