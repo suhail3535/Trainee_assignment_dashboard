@@ -96,12 +96,18 @@ const Exam = ({ initialData }) => {
             </div>
 <h1 style={{textAlign: "center", marginTop: "20px"}}>All Exams Marks Details</h1>
 
-            <Table
+             {loading ? (
+                <Loader />
+
+            ) : (
+                <Table
                 className='marks_table'
                 columns={columns}
                 dataSource={tableData}
                 bordered
             />
+            )}
+
         </>
     );
 };
