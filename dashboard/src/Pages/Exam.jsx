@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Input, Table } from 'antd';
 import axios from 'axios';
+import Loader from './Loader';
+
 import './table.css';
 
 const api = 'https://trainee-assignment-dashboard.vercel.app/studentmark/addmarks';
