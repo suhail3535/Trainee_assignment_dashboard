@@ -1,11 +1,13 @@
 const express = require("express");
 const app = express();
 
-const { studentModel } = require("./model.js");
+const { studentModel, projectModel } = require("./model.js");
 const { marksModel } = require("./model.js");
+// const { marksModel } = require("./model.js");
 app.use(express.json());
 const studentDetails = express.Router();
 const studentmarks = express.Router();
+const projectDetails = express.Router();
 
 
 // <--------------------postrequest-------------------------->
@@ -24,6 +26,16 @@ studentmarks.post("/addmarks", async (req, res) => {
     const data = req.body;
     try {
         const user = new marksModel(data);
+        await user.save();
+        res.status(200).send({ msg: "Project Link Added" });
+    } catch (error) {
+        res.status(400).send({ msg: error.msg });
+    }
+});
+projectDetails.post("/addproject", async (req, res) => {
+    const data = req.body;
+    try {
+        const user = new projectModel(data);
         await user.save();
         res.status(200).send({ msg: "Marks Link Added" });
     } catch (error) {
@@ -44,6 +56,14 @@ studentmarks.get("/", async (req, res) => {
 studentDetails.get("/", async (req, res) => {
     try {
         const users = await studentModel.find();
+        res.status(200).send(users);
+    } catch (error) {
+        res.status(400).send({ msg: "error.msg " });
+    }
+});
+projectDetails.get("/", async (req, res) => {
+    try {
+        const users = await projectModel.find();
         res.status(200).send(users);
     } catch (error) {
         res.status(400).send({ msg: "error.msg " });
@@ -80,5 +100,6 @@ studentDetails.delete("/delete/:userID", async (req, res) => {
 // export userRouter
 module.exports = {
     studentDetails,
-    studentmarks
+    studentmarks,
+    projectDetails
 };

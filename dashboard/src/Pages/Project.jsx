@@ -6,9 +6,10 @@ import Loader from './Loader';
 import './table.css';
 import { useNavigate } from 'react-router-dom';
 
-const api = 'https://trainee-assignment-dashboard.vercel.app/studentmark/addmarks';
-const api2 = 'https://trainee-assignment-dashboard.vercel.app/studentmark';
-
+const api = 'https://trainee-assignment-dashboard.vercel.app/project/addproject';
+const api2 = 'https://trainee-assignment-dashboard.vercel.app/project';
+// const api2 = "http://localhost:8080/project"
+// const api = "http://localhost:8080/project/addproject"
 const columns = [
     {
         title: 'Months',
@@ -22,7 +23,7 @@ const columns = [
     },
 ];
 
-const Exam = ({ initialData }) => {
+const Project = () => {
     const [inputValue, setInputValue] = useState('');
     const [selectValue, setSelectValue] = useState('');
     const [tableData, setTableData] = useState([]);
@@ -34,14 +35,11 @@ const Exam = ({ initialData }) => {
             alert("Please fill in both Marks URL and Project Month");
             return;
         }
+
         const newData = {
             name: selectValue,
             link: inputValue,
         };
-
-
-
-
         const updatedData = [...tableData, newData];
         setTableData(updatedData);
         setInputValue('');
@@ -50,19 +48,19 @@ const Exam = ({ initialData }) => {
         axios.post(api, newData)
             .then(response => {
                 console.log('Marks added successfully!');
-                alert("added")
+                alert("Marks added successfully!");
             })
             .catch(error => {
                 console.error('Error adding marks:', error);
             });
     };
+
     const handleProject = () => {
-        navigate("/project")
+        navigate("/marks")
     }
     const handleProject1 = () => {
         navigate("/record")
     }
-
     const getdata = async () => {
         try {
             let res = await axios.get(api2)
@@ -86,7 +84,7 @@ const Exam = ({ initialData }) => {
                     value={inputValue}
                     onChange={(e) => setInputValue(e.target.value)}
                 />
-                Exam Month:
+                Project Month:
                 <select
                     value={selectValue}
                     onChange={(e) => setSelectValue(e.target.value)}
@@ -110,28 +108,28 @@ const Exam = ({ initialData }) => {
                     Submit
                 </Button>
                 <Button type='primary' onClick={handleProject}>
-                    Live Projects
+                    Exam Marks
                 </Button>
                 <Button type='primary' onClick={handleProject1}>
                     Admin
                 </Button>
             </div>
-            <h1 style={{ textAlign: "center", marginTop: "20px", fontSize: "20px" }}>All Exams Marks Details</h1>
+            <h1 style={{ textAlign: "center", marginTop: "20px",fontSize:"20px" }}>All Live Projects Liks Details</h1>
 
-             {loading ? (
+            {loading ? (
                 <Loader />
 
             ) : (
                 <Table
-                className='marks_table'
-                columns={columns}
-                dataSource={tableData}
-                bordered
-            />
+                    className='marks_table'
+                    columns={columns}
+                    dataSource={tableData}
+                    bordered
+                />
             )}
 
         </>
     );
 };
 
-export default Exam;
+export default Project;

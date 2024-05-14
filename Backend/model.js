@@ -24,11 +24,24 @@ const marksSchema = mongoose.Schema(
         versionKey: false,
     }
 );
+const projectSchema = mongoose.Schema(
+    {
+        name: String,
+        link: String,
+
+
+    },
+    {
+        versionKey: false,
+    }
+);
 
 const studentModel = mongoose.model("student", studentSchema);
 const marksModel = mongoose.model("studentmarks", marksSchema);
+const projectModel = mongoose.model("projects", projectSchema);
 
 module.exports = {
     studentModel,
-    marksModel
+    marksModel,
+    projectModel
 };

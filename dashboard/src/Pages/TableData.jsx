@@ -66,6 +66,10 @@ const DataTable = ({ data }) => {
     const handleMarks = () => {
     navigate("/marks")
     }
+    const handleProject = () => {
+        navigate("/project")
+    }
+
 
     // Filter data based on filter value
     let filterData = filterValue ? data.filter((ele) => ele.sname === filterValue) : data;
@@ -101,10 +105,17 @@ const DataTable = ({ data }) => {
                     <div style={{ marginBottom: '0px' }}>Total Projects Submitted : {data.length}</div>
                 )}
                 <Button onClick={handleMarks} type='primary'>Students Marks</Button>
+                <Button onClick={handleProject} type='primary'>Live Projects</Button>
             </div>
+
+
             {filterValue && (
                 <div style={{ marginBottom: '10px' }}>Total Assignment of {filterValue}: {filterData.length}</div>
             )}
+
+
+
+
             <ResponsiveContainer className="bar" width="100%" height={300}>
                 <BarChart
                     data={filterValue ? totalProjectsChartData.filter(item => item.name === filterValue) : totalProjectsChartData}
