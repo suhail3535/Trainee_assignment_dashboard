@@ -23,7 +23,7 @@ const Exam = ({ initialData }) => {
     const [inputValue, setInputValue] = useState('');
     const [selectValue, setSelectValue] = useState('');
     const [tableData, setTableData] = useState([]);
-
+ const [loading, setLoading] = useState(true);
     const handleSubmit = () => {
         const newData = {
             name: selectValue,
@@ -52,7 +52,7 @@ const Exam = ({ initialData }) => {
             let res = await axios.get(api2)
             console.log(res.data);
             setTableData(res.data)
-            // setLoading(false)
+            setLoading(false)
         } catch (error) {
             console.log(error);
         }
