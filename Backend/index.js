@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const { studentDetails } = require('./Route');
 const { studentmarks } = require('./Route');
 const { projectDetails } = require('./Route');
-const cors = require('cors-anywhere');
+const cors = require('cors');
 const { connection } = require('./db');
 const app = express();
 const port = 8080;
@@ -18,6 +18,8 @@ app.use(
         credentials: true
     })
 );
+
+// Enable preflight for all routes
 app.options('*', cors());
 
 app.get("/", (req, res) => {
