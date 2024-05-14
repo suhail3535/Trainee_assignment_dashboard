@@ -114,7 +114,7 @@ const Project = () => {
                     Admin
                 </Button>
             </div>
-            <h1 style={{ textAlign: "center", marginTop: "20px",fontSize:"20px" }}>All Live Projects Liks Details</h1>
+            <h1 style={{ textAlign: "center", marginTop: "20px",fontSize:"20px" }}>All Live Projects Links Details</h1>
 
             {loading ? (
                 <Loader />
