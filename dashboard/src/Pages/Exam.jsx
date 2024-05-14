@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Input, Table } from 'antd';
 import axios from 'axios';
+import Loader from './Loader';
+
 import './table.css';
 
 const api = 'https://trainee-assignment-dashboard.vercel.app/studentmark/addmarks';
@@ -13,7 +15,7 @@ const columns = [
         render: (text) => <span>{text}</span>,
     },
     {
-        title: 'Link',
+        title: 'Marks Link',
         dataIndex: 'link', // Assuming 'link' is the key for the input field value
         render: (text) => <a href={text} style={{ color: 'blue' }} target="_blank" rel="noopener noreferrer">{text}</a>,
     },
@@ -23,7 +25,7 @@ const Exam = ({ initialData }) => {
     const [inputValue, setInputValue] = useState('');
     const [selectValue, setSelectValue] = useState('');
     const [tableData, setTableData] = useState([]);
-
+ const [loading, setLoading] = useState(true);
     const handleSubmit = () => {
         const newData = {
             name: selectValue,
@@ -52,7 +54,7 @@ const Exam = ({ initialData }) => {
             let res = await axios.get(api2)
             console.log(res.data);
             setTableData(res.data)
-            // setLoading(false)
+            setLoading(false)
         } catch (error) {
             console.log(error);
         }
@@ -75,6 +77,7 @@ const Exam = ({ initialData }) => {
                     value={selectValue}
                     onChange={(e) => setSelectValue(e.target.value)}
                 >
+                    <option value=''>Select</option>
                     <option value='January'>January</option>
                     <option value='February'>February</option>
                     <option value='March'>March</option>
@@ -93,12 +96,20 @@ const Exam = ({ initialData }) => {
                     Submit
                 </Button>
             </div>
-            <Table
+<h1 style={{textAlign: "center", marginTop: "20px"}}>All Exams Marks Details</h1>
+
+             {loading ? (
+                <Loader />
+
+            ) : (
+                <Table
                 className='marks_table'
                 columns={columns}
                 dataSource={tableData}
                 bordered
             />
+            )}
+
         </>
     );
 };

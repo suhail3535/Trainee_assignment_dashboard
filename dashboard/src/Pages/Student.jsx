@@ -5,8 +5,8 @@ import Loader from './Loader';
 
 import DataTable from './TableData';
 
-const api = "http://localhost:8080/student"
-// const api ="https://trainee-assignment-dashboard.vercel.app/student"
+// const api = "http://localhost:8080/student"
+const api ="https://trainee-assignment-dashboard.vercel.app/student"
 const Student = () => {
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(true);
