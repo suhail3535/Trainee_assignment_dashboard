@@ -72,7 +72,7 @@ const VehicleInfoForm = () => {
                             <Form.Item label="Github Link" name="github">
                                 <Input placeholder='Github Link' />
                             </Form.Item>
-                            <Form.Item label="Project Description" name="description" rules={[{ required: true, message: 'Please submit project Description!' }]}>
+                            <Form.Item label="Project Description (Check what's App group for it)" name="description" rules={[{ required: true, message: 'Please submit project Description!' }]}>
                                 <Input placeholder='Description' />
                             </Form.Item>
 
