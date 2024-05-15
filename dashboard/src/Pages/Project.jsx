@@ -131,13 +131,13 @@ const Project = () => {
             </div>
 
             <h1 style={{ textAlign: "center", marginTop: "20px", fontSize: "18px" }}>
-                    Demo React Project: Rajasthan Police Theft Vehicle Module
                 <a href="https://rajasthan-police-theftvehicle-module.netlify.app/" target="_blank" rel="noopener noreferrer" style={{ color: "blue", textDecoration: "none" }}>
+                    Demo React Project: Rajasthan Police Theft Vehicle Module
                 </a>
             </h1>
 
 
-            <h1 style={{ textAlign: "center", marginTop: "20px",fontSize:"18px" }}>All Live Projects Links Details</h1>
+            <h1 style={{ textAlign: "center", marginTop: "10px",fontSize:"18px" }}>All Live Projects Links Details</h1>
     {tableData && (
                     <div style={{ marginBottom: '30px' }}>Total Projects Submitted : {tableData.length}</div>
                 )}
