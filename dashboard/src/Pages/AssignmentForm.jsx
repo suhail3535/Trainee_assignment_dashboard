@@ -80,7 +80,7 @@ const VehicleInfoForm = () => {
 
                         <div className='vehiinput'>
                             <Form.Item label="Date" name="date" rules={[{ required: true, message: 'Please select date!' }]}>
-                                <DatePicker  />
+                                <DatePicker style={{width:"100%"}} />
                             </Form.Item>
                         </div>
 
