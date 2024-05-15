@@ -114,7 +114,12 @@ const Project = () => {
                     Admin
                 </Button>
             </div>
+
+
             <h1 style={{ textAlign: "center", marginTop: "20px",fontSize:"20px" }}>All Live Projects Links Details</h1>
+    {tableData && (
+                    <div style={{ marginBottom: '0px' }}>Total Projects Submitted : {tableData.length}</div>
+                )}
 
             {loading ? (
                 <Loader />
