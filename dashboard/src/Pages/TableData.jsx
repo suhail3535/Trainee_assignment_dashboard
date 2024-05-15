@@ -57,7 +57,7 @@ const DataTable = ({ data }) => {
     const navigate=useNavigate()
     const [filterValue, setFilterValue] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
-    const pageSize = 10; // Number of items per page
+    const pageSize = 15; // Number of items per page
     const [loading, setLoading] = useState(false);
 
     const resetFilter = () => {
