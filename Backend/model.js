@@ -6,7 +6,8 @@ const studentSchema = mongoose.Schema(
         link: String,
         date: String,
         sname: String,
-        github: String
+        github: String,
+        description:String,
 
     },
     {
@@ -28,6 +29,8 @@ const projectSchema = mongoose.Schema(
     {
         name: String,
         link: String,
+        tr: String,
+        desc:String
 
 
     },

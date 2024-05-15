@@ -12,20 +12,35 @@ const api2 = 'https://trainee-assignment-dashboard.vercel.app/project';
 // const api = "http://localhost:8080/project/addproject"
 const columns = [
     {
+        title: 'Trainee Name',
+        dataIndex: 'tr', // Assuming 'link' is the key for the input field value
+        render: (text) => <span>{text}</span>,
+        width: 200,
+    },
+
+    {
+        title: 'Projects Link',
+        dataIndex: 'link', // Assuming 'link' is the key for the input field value
+        render: (text) => <a href={text} style={{ color: 'blue' }} target="_blank" rel="noopener noreferrer">{text}</a>,
+    },
+    {
+        title: 'Description',
+        dataIndex: 'desc',
+        render: (text) => <span>{text}</span>,
+    },
+    {
         title: 'Months',
         dataIndex: 'name',
         render: (text) => <span>{text}</span>,
     },
-    {
-        title: 'Marks Link',
-        dataIndex: 'link', // Assuming 'link' is the key for the input field value
-        render: (text) => <a href={text} style={{ color: 'blue' }} target="_blank" rel="noopener noreferrer">{text}</a>,
-    },
+
 ];
 
 const Project = () => {
     const [inputValue, setInputValue] = useState('');
     const [selectValue, setSelectValue] = useState('');
+    const [studentname, setStudentname] = useState('');
+    const [dec, setdec] = useState('');
     const [tableData, setTableData] = useState([]);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate()

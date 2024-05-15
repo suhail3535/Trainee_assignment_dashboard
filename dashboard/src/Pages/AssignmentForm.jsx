@@ -72,11 +72,15 @@ const VehicleInfoForm = () => {
                             <Form.Item label="Github Link" name="github">
                                 <Input placeholder='Github Link' />
                             </Form.Item>
+                            <Form.Item label="Project Description" name="description" rules={[{ required: true, message: 'Please submit project Description!' }]}>
+                                <Input placeholder='Description' />
+                            </Form.Item>
+
                         </div>
 
                         <div className='vehiinput'>
                             <Form.Item label="Date" name="date" rules={[{ required: true, message: 'Please select date!' }]}>
-                                <DatePicker style={{ width: "100%" }} />
+                                <DatePicker  />
                             </Form.Item>
                         </div>
 

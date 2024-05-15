@@ -26,7 +26,7 @@ const columns = [
     {
         title: 'Sr.No',
         dataIndex: 'index',
-        width: 100,
+        width: 80,
     },
     {
         title: 'Assignment Name',
@@ -35,6 +35,7 @@ const columns = [
     {
         title: 'Trainee Name',
         dataIndex: 'sname',
+        width: 130,
     },
     {
         title: 'Project Link',
@@ -46,10 +47,14 @@ const columns = [
         dataIndex: 'github',
         render: (text) => <a style={{ color: '#8884d8' }} href={text} target="_blank" rel="noopener noreferrer">{text}</a>,
     },
-
+    {
+        title: 'Description',
+        dataIndex: 'description',
+    },
     {
         title: 'Date',
         dataIndex: 'date',
+        width: 150,
     },
 ];
 

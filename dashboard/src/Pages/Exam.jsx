@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router-dom';
 
 const api = 'https://trainee-assignment-dashboard.vercel.app/studentmark/addmarks';
 const api2 = 'https://trainee-assignment-dashboard.vercel.app/studentmark';
+// const api = "http://localhost:8080/studentmark/addmarks"
+// const api2 = "http://localhost:8080/studentmark"
 
 const columns = [
     {

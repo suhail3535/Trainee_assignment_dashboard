@@ -73,6 +73,16 @@ projectDetails.get("/", async (req, res) => {
 
 // <--------------------updaterequest-------------------------->
 
+projectDetails.patch("/update/:userID", async (req, res) => {
+    const { userID } = req.params;
+    const data = req.body;
+    try {
+        await projectModel.findByIdAndUpdate({ _id: userID }, data);
+        res.status(200).send({ msg: "Details Updated" });
+    } catch (error) {
+        res.status(400).send({ msg: error.msg });
+    }
+});
 studentDetails.patch("/update/:userID", async (req, res) => {
     const { userID } = req.params;
     const data = req.body;
