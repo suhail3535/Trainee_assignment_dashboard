@@ -59,7 +59,7 @@ const VehicleInfoForm = () => {
                         autoComplete="off"
                     >
                         <div className='vehiinput'>
-                            <Form.Item label="Assignment Name" name="name" rules={[{ required: true, message: 'Please enter Assignment Name!' }]}>
+                            <Form.Item label="Assignment Name (Check what's App group for it)" name="name" rules={[{ required: true, message: 'Please enter Assignment Name!' }]}>
                                 <Input placeholder='Enter your name' />
                             </Form.Item>
 
