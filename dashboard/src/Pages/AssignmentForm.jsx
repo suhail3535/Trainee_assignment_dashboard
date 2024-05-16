@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Input, Select, DatePicker, Spin } from 'antd';
 import axios from 'axios';
+import laptop from "../assets/laptop2.jpg"
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { LoadingOutlined } from '@ant-design/icons'
@@ -43,7 +44,10 @@ const VehicleInfoForm = () => {
     };
 
     return (
-        <>
+        <div className='regcontainer'>
+            <div className='image_div'>
+                <img src={laptop} alt="" />
+            </div>
             <div className='main_form'>
                 <div className='main_container_forms_vehi'>
                     <Form
@@ -80,7 +84,7 @@ const VehicleInfoForm = () => {
 
                         <div className='vehiinput'>
                             <Form.Item label="Date" name="date" rules={[{ required: true, message: 'Please select date!' }]}>
-                                <DatePicker style={{width:"100%"}} />
+                                <DatePicker style={{ width: "100%" }} />
                             </Form.Item>
                         </div>
 
@@ -96,7 +100,7 @@ const VehicleInfoForm = () => {
                 <ToastContainer />
             </div>
 
-        </>
+        </div>
     );
 }
 
