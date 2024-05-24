@@ -86,7 +86,7 @@ const Footer = () => {
                             <Logo color={useColorModeValue('gray.700', 'white')} />
                         </Box>
                         <Text fontSize={'14px'}>
-                            Created By Suhail Khan | © 2024. All Rights Reserved
+                            Created By Suhail Khan ❤| © 2024. All Rights Reserved
                         </Text>
                         <Stack direction={'row'} spacing={6}>
                             <SocialButton label={'Twitter'} href={''}>
