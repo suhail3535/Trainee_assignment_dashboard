@@ -13,7 +13,7 @@ const api2 = 'https://trainee-assignment-dashboard.vercel.app/studentmark';
 
 const columns = [
     {
-        title: 'Months',
+        title: 'Exam Month',
         dataIndex: 'name',
         render: (text) => <span>{text}</span>,
     },
