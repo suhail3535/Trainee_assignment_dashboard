@@ -11,7 +11,25 @@
 
     background-color: rgba(246, 247, 247, 0.894);
 }
+.loader {
+    width: 100%;
+    margin: auto;
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(87, 86, 86);
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid green; */
+}
 
+#hash {
+    display: flex;
+    margin: auto;
+    color: (5, 5, 5, 1);
+
+}
 .image_div {
     display: grid;
     width: 50%;
@@ -36,7 +54,7 @@
 }
 
 .main_form_login {
-    
+
     margin-top: 20px;
 }
 
